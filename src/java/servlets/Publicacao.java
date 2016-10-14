@@ -38,7 +38,7 @@ public class Publicacao extends HttpServlet {
         
         
         //exibe o jsp no navegador (como se fosse o html)
-        request.getRequestDispatcher("/WEB-INF/index.jsp").forward(request, response);
+        request.getRequestDispatcher("/WEB-INF/login.jsp").forward(request, response);
     }
 
 
