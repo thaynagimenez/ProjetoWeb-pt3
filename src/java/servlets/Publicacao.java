@@ -37,7 +37,11 @@ public class Publicacao extends HttpServlet {
         PrintWriter writer = response.getWriter();
                 
         //exibe o jsp no navegador (como se fosse o html)
+<<<<<<< HEAD
         request.getRequestDispatcher("/WEB-INF/publicacao.jsp").forward(request, response);
+=======
+        request.getRequestDispatcher("/WEB-INF/login.jsp").forward(request, response);
+>>>>>>> 5bb23de8ef4947a07ff6c27e98cf55b575f6341b
     }
 
 
