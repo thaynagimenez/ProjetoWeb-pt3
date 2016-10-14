@@ -17,7 +17,7 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author thayn
  */
-@WebServlet(urlPatterns = {"/Publicacao"})
+@WebServlet(urlPatterns = {"/publicacao"})
 public class Publicacao extends HttpServlet {
 
 
@@ -35,10 +35,9 @@ public class Publicacao extends HttpServlet {
             throws ServletException, IOException {
         
         PrintWriter writer = response.getWriter();
-        
-        
+                
         //exibe o jsp no navegador (como se fosse o html)
-        request.getRequestDispatcher("/WEB-INF/index.jsp").forward(request, response);
+        request.getRequestDispatcher("/WEB-INF/publicacao.jsp").forward(request, response);
     }
 
 
