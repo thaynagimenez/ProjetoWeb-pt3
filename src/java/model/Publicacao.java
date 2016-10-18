@@ -1,3 +1,5 @@
+package model;
+
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -7,8 +9,20 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class PublicacaoDAO {
+public class Publicacao {
 
+    String titulo;
+    String texto;
+    
+    public void Publicacao(){}
+    
+    public void setTitulo(String titulo){ this.titulo = titulo;}
+    public String getTitulo(){return this.titulo;}
+    
+    public void setTexto(String texto){ this.texto = texto;}
+    public String getTexto(){return this.texto;}
+    
+    
     public static List<Publicacao> get() {
         List<Publicacao> resultado = new ArrayList<Publicacao>();
         Connection conn;

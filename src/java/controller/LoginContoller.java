@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package servlets;
+package controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -17,16 +17,21 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author Ricardo
  */
-@WebServlet(name = "PublicacaoController", urlPatterns = {"/publicacaocontroller"})
-public class PublicacaoController extends HttpServlet {
+@WebServlet(name = "login", urlPatterns = {"/login"})
 
+public class LoginContoller extends HttpServlet {
 
-   public void doPost (HttpServletRequest req,
-            HttpServletResponse res) throws IOException {
-        String nome = req.getParameter("nome"),
-               id = req.getParameter("id");
-        res.sendRedirect("cidade");
+    protected void doGet(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        
+        PrintWriter writer = response.getWriter();                
+        request.getRequestDispatcher("/WEB-INF/login.jsp").forward(request, response);
+
     }
-
-
+    
+    public void doPost (HttpServletRequest req,
+            HttpServletResponse res) throws IOException {
+   
+    }
+    
 }

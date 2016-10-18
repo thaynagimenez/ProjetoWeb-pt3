@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package servlets;
+package controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -17,26 +17,19 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author Ricardo
  */
-@WebServlet(name = "Home", urlPatterns = {"/Home"})
-public class Home extends HttpServlet {
+@WebServlet(name = "home", urlPatterns = {"/home"})
+public class HomeController extends HttpServlet {
 
-   // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
-    /**
-     * Handles the HTTP <code>GET</code> method.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
-    @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         
         PrintWriter writer = response.getWriter();
         
-        
-        //exibe o jsp no navegador (como se fosse o html)
         request.getRequestDispatcher("/WEB-INF/home.jsp").forward(request, response);
+    }
+    
+    public void doPost (HttpServletRequest req,
+            HttpServletResponse res) throws IOException {
+   
     }
 }

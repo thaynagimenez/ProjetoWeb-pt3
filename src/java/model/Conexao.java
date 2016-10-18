@@ -1,4 +1,4 @@
-package dao;
+package model;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -8,13 +8,13 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ConexaoDAO {
+public class Conexao {
 
     private String nome;
     private String email;
     private String senha;
     
-    private ConexaoDAO () {}
+    private Conexao () {}
 
     public void setNome (String nome) { this.nome = nome; }
     public String getNome () { return this.nome; }
@@ -25,8 +25,8 @@ public class ConexaoDAO {
     public void setSenha (String senha) {this.senha = senha; }
     public String getSenha (String senha) {return this.senha; }
     
-    public static List <ConexaoDAO> get() {
-        List <ConexaoDAO> resultado = new ArrayList <ConexaoDAO> ();
+    public static List <Conexao> get() {
+        List <Conexao> resultado = new ArrayList <Conexao> ();
         Connection conn;
         try {
             conn = DriverManager.getConnection(
@@ -35,7 +35,7 @@ public class ConexaoDAO {
                     "SELECT * FROM Usuario;");
             ResultSet rs = ps.executeQuery();
             while(rs.next()) {
-                ConexaoDAO conexao = new ConexaoDAO();
+                Conexao conexao = new Conexao();
                 conexao.setNome(rs.getString("nome"));
                 conexao.setEmail(rs.getString("email"));
                 conexao.setSenha(rs.getString("senha"));
@@ -49,9 +49,9 @@ public class ConexaoDAO {
         return resultado;
     }
 
-    public static ConexaoDAO get(String senha) {
+    public static Conexao get(String senha) {
         Connection conn;
-        ConexaoDAO c = null;
+        Conexao c = null;
         try {
             conn = DriverManager.getConnection(
                     "jdbc:postgresql://localhost:5432/Projeto2","postgres","thayna");
@@ -60,7 +60,7 @@ public class ConexaoDAO {
             ps.setString(1, senha);
             ResultSet rs = ps.executeQuery();
             if(rs.next()) {
-                c = new ConexaoDAO();
+                c = new Conexao();
                 c.setNome(rs.getString("nome"));
             }
             conn.close();

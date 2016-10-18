@@ -11,7 +11,7 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Pagina de plublicação de conteúdo</title>
-        <link href="style.css" rel="stylesheet" type="text/css" />   
+        <!-- <link href="style.css" rel="stylesheet" type="text/css" /> -->   
     </head>
 
     <body>
@@ -25,6 +25,9 @@
             </textarea>
             <input type="submit" value="inserir">
         </form>
+        
+        <%-- Rodapé --%>
+        <jsp:include page="/WEB-INF/_footer.jsp"></jsp:include>
     </body>   
 
 </html>
