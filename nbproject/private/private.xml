@@ -3,10 +3,10 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/Ricardo/Documents/NetBeansProjects/WebProjeto2/src/java/PublicacaoDAO.java</file>
+            <file>file:/C:/Users/Ricardo/Documents/NetBeansProjects/WebProjeto2/nbproject/build-impl.xml</file>
+            <file>file:/C:/Users/Ricardo/Documents/NetBeansProjects/WebProjeto2/src/java/controller/PublicacaoController.java</file>
             <file>file:/C:/Users/Ricardo/Documents/NetBeansProjects/WebProjeto2/web/WEB-INF/publicacao.jsp</file>
-            <file>file:/C:/Users/Ricardo/Documents/NetBeansProjects/WebProjeto2/src/java/servlets/Publicacao.java</file>
-            <file>file:/C:/Users/Ricardo/Documents/NetBeansProjects/WebProjeto2/src/java/servlets/PublicacaoController.java</file>
+            <file>file:/C:/Users/Ricardo/Documents/NetBeansProjects/WebProjeto2/src/java/model/Publicacao.java</file>
         </group>
     </open-files>
 </project-private>

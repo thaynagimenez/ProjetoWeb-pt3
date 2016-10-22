@@ -39,7 +39,8 @@ public class Usuario {
         Connection conn;
         try {
             conn = DriverManager.getConnection(
-                    "jdbc:postgresql://localhost:5432/Projeto2", "postgres", "thayna");
+                    //"jdbc:postgresql://localhost:5432/Projeto2", "postgres", "admin");
+                    "jdbc:postgresql://localhost:5432/Projeto2", "postgres", "admin");
             PreparedStatement ps = conn.prepareStatement(
                     "UPDATE Usuario SET nome=? WHERE senha=?;");
             ps.setString(1, nome);
@@ -55,7 +56,8 @@ public class Usuario {
         Connection conn;
         try {
             conn = DriverManager.getConnection(
-                    "jdbc:postgresql://localhost:5432/Projeto2", "postgres", "thayna");
+                    //"jdbc:postgresql://localhost:5432/Projeto2", "postgres", "admin");
+                    "jdbc:postgresql://localhost:5432/Projeto2", "postgres", "admin");
             PreparedStatement ps = conn.prepareStatement(
                     "INSERT INTO Usuario(nome) VALUES (?);");
             ps.setString(1, nome);

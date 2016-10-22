@@ -7,11 +7,19 @@ package controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import model.Publicacao;
 
 /**
  *
@@ -30,9 +38,15 @@ public class PublicacaoController extends HttpServlet {
 
     public void doPost(HttpServletRequest req,
             HttpServletResponse res) throws IOException {
-        String nome = req.getParameter("nome"),
-                id = req.getParameter("id");
-        res.sendRedirect("cidade");
+        String text = req.getParameter("texto"),
+                tit = req.getParameter("titulo");
+        try {
+            Publicacao.getInstance().insert("textooo", tit);
+        } catch (SQLException ex) {
+            Logger.getLogger(PublicacaoController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        res.sendRedirect("home");
     }
 
 }
