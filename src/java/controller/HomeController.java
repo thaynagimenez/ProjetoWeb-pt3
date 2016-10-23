@@ -12,6 +12,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -22,14 +23,21 @@ public class HomeController extends HttpServlet {
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        HttpSession session = request.getSession();
+
+        System.out.println(session.getAttribute("usuario"));
+        System.out.println(session.getAttribute("logado"));
         
-        PrintWriter writer = response.getWriter();
-        
-        request.getRequestDispatcher("/WEB-INF/home.jsp").forward(request, response);
+        if (session.getAttribute("logado") != null) {
+            request.getRequestDispatcher("/WEB-INF/home.jsp").forward(request, response);
+        } else {
+            response.sendRedirect("login");
+        }
+
     }
-    
-    public void doPost (HttpServletRequest req,
+
+    public void doPost(HttpServletRequest req,
             HttpServletResponse res) throws IOException {
-   
+
     }
 }

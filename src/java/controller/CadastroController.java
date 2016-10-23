@@ -36,10 +36,14 @@ public class CadastroController extends HttpServlet {
     public void doPost(HttpServletRequest req,
             HttpServletResponse res) throws IOException {
 
-        String nome = req.getParameter("nome"),
-                login = req.getParameter("login"),
-                senha = req.getParameter("senha"),
-                senha2 = req.getParameter("senha2");
+        String nome = req.getParameter("nome");
+        String login = req.getParameter("email");
+        String senha = req.getParameter("senha");
+        String senha2 = req.getParameter("senha2");
+        
+        System.out.println("email :" +  login);
+        System.out.println("nome :" + nome);
+        System.out.println("senha :" + senha+"/"+senha2);
         try {
             if (senha.equals(senha2)) {
                 Usuario.getInstance().insert(nome, login, senha);

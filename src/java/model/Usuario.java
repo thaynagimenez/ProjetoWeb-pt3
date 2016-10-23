@@ -9,6 +9,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.logging.Level;
@@ -20,11 +21,11 @@ import java.util.logging.Logger;
  */
 public class Usuario {
 
-    private static Usuario usuario;    
+    private static Usuario usuario;
     private String nome;
     private String login;
     private String senha;
-    
+
     private static Connection conn;
 
     private Usuario() {
@@ -60,7 +61,6 @@ public class Usuario {
         }
     }
 
-
     public Usuario get(String login) throws SQLException {
         Statement stm = conn.createStatement();
 
@@ -77,11 +77,11 @@ public class Usuario {
         ps.executeUpdate();
     }
 
-    public void insert(String nome,String login, String senha) throws SQLException {
+    public void insert(String nome, String login, String senha) throws SQLException {
 
         PreparedStatement ps = this.conn.prepareStatement(
                 "INSERT INTO public.\"Usuarios\"(login, senha, nome) "
-                + "VALUES ('" + login + "','" + senha + "','"+ nome + "');");
+                + "VALUES ('" + login + "','" + senha + "','" + nome + "');");
 
         ps.executeUpdate();
 
@@ -94,16 +94,42 @@ public class Usuario {
         ps.executeUpdate();
     }
 
-    public String getNome() { return nome;}
+    public boolean validaUsuario(String login, String senha) throws SQLException {
 
-    public void setNome(String nome) {this.nome = nome;}
+        System.out.println("login:" + login);
+        System.out.println("senha:" + senha);
 
-    public String getLogin() {return login;}
+        PreparedStatement ps = conn.prepareStatement(
+                "SELECT senha FROM public.\"Usuarios\" WHERE login=?;");
+        ps.setString(1, login);
+        ResultSet rs = ps.executeQuery();
+//        System.out.println("rs --> " + rs.getString("senha"));
+        //return rs.getString("senha").equals(senha);
+        return true;
+    }
 
-    public void setLogin(String login) {this.login = login;}
+    public String getNome() {
+        return nome;
+    }
 
-    public String getSenha() {return senha;}
-    
-    public void setSenha(String senha) {this.senha = senha;}
-    
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+
+    public String getLogin() {
+        return login;
+    }
+
+    public void setLogin(String login) {
+        this.login = login;
+    }
+
+    public String getSenha() {
+        return senha;
+    }
+
+    public void setSenha(String senha) {
+        this.senha = senha;
+    }
+
 }

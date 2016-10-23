@@ -36,7 +36,7 @@
         <a class="hiddenanchor" id="tologin"></a>
         <div id="wrapper">
             <div id="login" class="animate form">
-    			<form  action="#" method="post" autocomplete="on"> 
+    			<form  action="login" method="post" autocomplete="on"> 
                     <h2>Login</h2> 
                     <p> 
                         <label for="username" class="uname" data-icon="u" ><span>E-mail</span></label>
@@ -61,30 +61,30 @@
             </div>
     		
             <div id="register" class="animate form">
-                <form  action="#" method="post" autocomplete="on"> 
+                <form  action="cadastro" method="post" autocomplete="on"> 
                     <h2>Cadastro</h2> 
                     <p> 
-    			<label for="usernamesignup" class="uname" data-icon="u"><span>Nome</span></label>
-                        <input id="usernamesignup" name="usernamesignup" required="required" type="text" placeholder="Nome" />
+    			<label for="nome" class="uname" data-icon="u"><span>Nome</span></label>
+                        <input id="nome" name="nome" required="required" type="text" placeholder="Nome" />
                     </p>
                     <p> 
-                        <label for="emailsignup" class="youmail" data-icon="e" ><span>E-mail</span></label>
-                        <input id="emailsignup" name="emailsignup" required="required" type="email" placeholder="exemplo@exemplo.com"/> 
+                        <label for="email" class="youmail" data-icon="e" ><span>E-mail</span></label>
+                        <input id="email" name="email" required="required" type="email" placeholder="exemplo@exemplo.com"/> 
                     </p>
                     <p> 
-                        <label for="passwordsignup" class="youpasswd" data-icon="p"><span>Senha</span></label>
-                        <input id="passwordsignup" name="passwordsignup" required="required" type="password" placeholder="eg. X8df!90EO"/>
+                        <label for="senha" class="youpasswd" data-icon="p"><span>Senha</span></label>
+                        <input id="senha" name="senha" required="required" type="password" placeholder="eg. X8df!90EO"/>
                     </p>
                     <p> 
-                        <label for="passwordsignup_confirm" class="youpasswd" data-icon="p"><span>Confirmação de senha</span></label>
-                        <input id="passwordsignup_confirm" name="passwordsignup_confirm" required="required" type="password" placeholder="eg. X8df!90EO"/>
+                        <label for="senha2" class="youpasswd" data-icon="p"><span>Confirmação de senha</span></label>
+                        <input id="senha2" name="senha2" required="required" type="password" placeholder="eg. X8df!90EO"/>
                     </p>
                     <p class="signin button"> 
                         <input type="submit" value="Cadastrar"/> 
                     </p>
                     <p class="change_link">  
                         <span>Já é membro?</span>
-                        <a href="#tologin" class="to_register">Login</a>
+                        <a href="login" class="to_register">Login</a>
                     </p>
                 </form>
             </div>
