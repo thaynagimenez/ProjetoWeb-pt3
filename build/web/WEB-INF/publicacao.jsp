@@ -33,15 +33,18 @@
                 <div class="panel-heading">Escreva seu texto aqui</div>
                 <div class="panel-body">
                     
-                    <form action="publicacao" method="POST" accept-charset="utf-8">
+                    <form action="publicacao" method="POST" enctype="multipart/form-data" accept-charset="utf-8">
                         
                         <label for="titulo">Titulo:</label>
                         <input type="text" name="titulo" id="titulo">
                         
-                        <!-- <textarea rows="4" cols="50">
+                        <input type="file" name="file" />
+                        
+                        <textarea rows="4" cols="50" name="texto" id="texto">
                             Utilize esta área para escrever seu post
-                        </textarea> -->
-                        <input type="submit" value="inserir">
+                        </textarea > 
+                        
+                        <input type="submit" value="Enviar">
                     </form>
 
                 </div>

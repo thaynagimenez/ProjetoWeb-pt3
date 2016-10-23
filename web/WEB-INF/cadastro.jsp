@@ -35,22 +35,22 @@
                     <form action="cadastro" method="POST" accept-charset="utf-8">
                         <div class="form-group">
                             <label for="nome">Nome :</label>
-                            <input type="text" name="nome" value="${cidadeEditar.nome}" id="nome">
+                            <input type="text" name="nome" id="nome">
                     </div>
 
                     <div class="form-group">
                         <label for="login">Login :</label>
-                        <input type="text" name="login" value="${cidadeEditar.nome}" id="login">
+                        <input type="text" name="login" id="login">
                     </div>
 
                     <div class="form-group">
                         <label for="senha">Senha : </label>
-                        <input type="text" name="senha" value="${cidadeEditar.nome}" id="senha">
+                        <input type="text" name="senha" id="senha">
                     </div>
 
                     <div class="form-group">
-                        <label for="senha2">Repita sua senaha : </label>
-                        <input type="text" name="senha2" value="${cidadeEditar.nome}" id="senha2">
+                        <label for="senha2">Repita sua senha : </label>
+                        <input type="text" name="senha2" id="senha2">
                     </div>
                     <input type="submit" value="Cadastrar">
                 </form>

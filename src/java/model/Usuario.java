@@ -8,7 +8,11 @@ package model;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -16,84 +20,90 @@ import java.sql.SQLException;
  */
 public class Usuario {
 
-    String nome;
-    String senha;
-    String login;
+    private static Usuario usuario;    
+    private String nome;
+    private String login;
+    private String senha;
+    
+    private static Connection conn;
 
-    public static void delete(String senha) {
-        Connection conn;
-        try {
-            conn = DriverManager.getConnection(
-                    "jdbc:postgresql://localhost:5432/Projeto2", "postgres", "thayna");
-            PreparedStatement ps = conn.prepareStatement(
-                    "DELETE FROM Usuario WHERE senha=?;");
-            ps.setString(1, senha);
-            ps.executeUpdate();
-            conn.close();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-    }
+    private Usuario() {
 
-    public static void update(String senha, String nome) {
-        Connection conn;
         try {
-            conn = DriverManager.getConnection(
-                    //"jdbc:postgresql://localhost:5432/Projeto2", "postgres", "admin");
+
+            Class.forName("org.postgresql.Driver");
+            this.conn = DriverManager.getConnection(
                     "jdbc:postgresql://localhost:5432/Projeto2", "postgres", "admin");
-            PreparedStatement ps = conn.prepareStatement(
-                    "UPDATE Usuario SET nome=? WHERE senha=?;");
-            ps.setString(1, nome);
-            ps.setString(2, senha);
-            ps.executeUpdate();
-            conn.close();
-        } catch (SQLException e) {
-            e.printStackTrace();
+
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(Publicacao.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException ex) {
+            Logger.getLogger(Publicacao.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+    }
+
+    public static Usuario getInstance() {
+        if (usuario == null) {
+            usuario = new Usuario();
+        }
+        return usuario;
+    }
+
+    public void closeConnection() {
+        if (conn != null) {
+            try {
+                conn.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
         }
     }
 
-    public static void insert(String nome) {
-        Connection conn;
-        try {
-            conn = DriverManager.getConnection(
-                    //"jdbc:postgresql://localhost:5432/Projeto2", "postgres", "admin");
-                    "jdbc:postgresql://localhost:5432/Projeto2", "postgres", "admin");
-            PreparedStatement ps = conn.prepareStatement(
-                    "INSERT INTO Usuario(nome) VALUES (?);");
-            ps.setString(1, nome);
-            ps.executeUpdate();
-            conn.close();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
+
+    public Usuario get(String login) throws SQLException {
+        Statement stm = conn.createStatement();
+
+        ResultSet rs = stm.executeQuery("SELECT * FROM Usuarios WHERE login=" + login + ";");
+        Usuario usu = new Usuario();
+        return usu;
     }
 
+    public void update(String login, String senha, String nome) throws SQLException {
+        PreparedStatement ps = this.conn.prepareStatement(
+                "UPDATE Usuarios SET nome=" + login + ",senha=" + senha
+                + "WHERE login=" + login + ";");
+
+        ps.executeUpdate();
+    }
+
+    public void insert(String nome,String login, String senha) throws SQLException {
+
+        PreparedStatement ps = this.conn.prepareStatement(
+                "INSERT INTO public.\"Usuarios\"(login, senha, nome) "
+                + "VALUES ('" + login + "','" + senha + "','"+ nome + "');");
+
+        ps.executeUpdate();
+
+    }
+
+    public void delete(String login) throws SQLException {
+        PreparedStatement ps = this.conn.prepareStatement(
+                "DELETE FROM Usuarios WHERE login=" + login + ";");
+
+        ps.executeUpdate();
+    }
+
+    public String getNome() { return nome;}
+
+    public void setNome(String nome) {this.nome = nome;}
+
+    public String getLogin() {return login;}
+
+    public void setLogin(String login) {this.login = login;}
+
+    public String getSenha() {return senha;}
     
+    public void setSenha(String senha) {this.senha = senha;}
     
-     public void Usuario() {
-    }
-    
-    public void setNome(String nome) {
-        this.nome = nome;
-    }
-
-    public String getNome() {
-        return this.nome;
-    }
-
-    public void setLogin(String login) {
-        this.login = login;
-    }
-
-    public String getLogin() {
-        return this.login;
-    }
-
-    public void setSenha(String senha) {
-        this.senha = senha;
-    }
-
-    public String getSenha(String senha) {
-        return this.senha;
-    }
 }
