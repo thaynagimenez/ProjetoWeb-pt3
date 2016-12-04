@@ -30,7 +30,6 @@ public class CadastroController extends HttpServlet {
 
         PrintWriter writer = response.getWriter();
         request.getRequestDispatcher("/WEB-INF/cadastro.jsp").forward(request, response);
-
     }
 
     public void doPost(HttpServletRequest req,
@@ -40,13 +39,17 @@ public class CadastroController extends HttpServlet {
         String login = req.getParameter("email");
         String senha = req.getParameter("senha");
         String senha2 = req.getParameter("senha2");
+        String endereco = req.getParameter("endereco");
         
         System.out.println("email :" +  login);
         System.out.println("nome :" + nome);
         System.out.println("senha :" + senha+"/"+senha2);
+        System.out.println("endereco: " + endereco);
         try {
             if (senha.equals(senha2)) {
-                Usuario.getInstance().insert(nome, login, senha);
+                Usuario.getInstance().insert(nome, login, senha, endereco);
+                req.getSession().setAttribute("logado", new Boolean(true));
+                req.getSession().setAttribute("usuario",login);
                 res.sendRedirect("home");
             } else {
                 res.setStatus(HttpServletResponse.SC_NOT_FOUND);
@@ -54,6 +57,5 @@ public class CadastroController extends HttpServlet {
         } catch (SQLException ex) {
             Logger.getLogger(PublicacaoController.class.getName()).log(Level.SEVERE, null, ex);
         }
-
     }
 }

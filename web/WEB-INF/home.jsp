@@ -1,24 +1,38 @@
 <%-- 
     Document   : home
     Created on : 13/10/2016, 21:47:24
-    Author     : Ricardo
+    Author     : thayn
 --%>
 
+<%@page import="model.Publicacao"%>
+<%@page import="java.util.ArrayList"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+
 <!DOCTYPE html>
 <html>
     <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Startup Weekend</title>
+        <!--Metadados-->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="keyword" content="Startup, Weekend, Network, Learn">
+        <meta name="description" content="Startup Weekend - Learn, Network, Startup">
+        <meta name="author" content="Ricardo Corassa e Thayna Gimenez">
+
+        <title>Startup Weekend - Learn, Network, Startup</title>
+
+        <!--Folha de estilo-->
+        <link href="style.css" rel="stylesheet" type="text/css" />
+
+        <!--Ícone da aba do navegador-->
+        <link href="icone.ico" rel="icon" sizes="32x32" type="image/ico" />
     </head>
 
     <body>
-        
         <%-- Cabeçallho --%>
         <jsp:include page="/WEB-INF/_header.jsp"></jsp:include>
         </body>
-        
-        
+
         <!--Seção 1 - Learn, Network, Startup-->
         <section class="sw-hero sw-hero-home inverter-cor">
             <div class="container">
@@ -37,6 +51,9 @@
                                     <div class="form-group">
                                         <input class="form-control" id="event" name="event" placeholder="Find" size="50" type="text" />
                                         <button class="btn btn-white btn-search" name="button" type="submit">Go!</button>
+                                        
+                                        <ul id="container" style="background-color: white"></ul>
+                                        <script type="text/javascript" src="/scripts/busca.js"></script>
                                     </div>
                                 </form>
                             </div>
@@ -53,48 +70,23 @@
                 <p class="pxl">Surrounded by smart, passionate people and with the best tools and approaches at your disposal, you’ll take giant leaps toward creating a business, becoming a founder, and connecting with the right people and resources.</p>
 
                 <div class="row sw-offset-row">
+                <c:forEach items="${lista}" var="lista">
                     <div class="col-md-3 col-sm-6">
                         <div class="sw-content-block sw-block-connect">
-                            <div class="sw-block-icon"><img src=""/></div>
-                            <h3>Connect</h3>
-                            <p>Connect with people driven to build something new. Rich and diverse talent is a Startup Weekend staple.</p>
-                            <p>Are you ready to meet your next (cofounder) (friend) (mentor) (investor)?</p>
+                            <div class="sw-block-icon"><img src="menu.png" width="99%"/></div>
+                            <form action="ler" method="POST" accept-charset="utf-8">
+                                <a href="ler?titulo=${lista.titulo}&texto=${lista.texto}" style="color: black"><h3>"${lista.titulo}"</h3></a>
+                            </form>
                         </div>
                     </div>
-                    <div class="col-md-3 col-sm-6">
-                        <div class="sw-content-block sw-block-discover">
-                            <div class="sw-block-icon"><img src=""/></div>
-                            <h3>Discover</h3>
-                            <p>Discover where you are on the Entrepreneur's Journey.</p>
-                            <p>Find the resources available near you.</p>
-                            <p>Leave knowing the next steps you need to take on your road to success.</p>
-                        </div>
-                    </div>
-                    <div class="col-md-3 col-sm-6">
-                        <div class="sw-content-block sw-block-learn">
-                            <div class="sw-block-icon"><img src=""/></div>
-                            <h3>Learn</h3>
-                            <p>Learn what it really takes to start a company.</p>
-                            <p>No book, panel, speaker, or blog post will teach you what you need to know.</p>
-                            <p>The only way to learn is the experience of trying.</p>
-                        </div>
-                    </div>
-                    <div class="col-md-3 col-sm-6">
-                        <div class="sw-content-block sw-block-start">
-                            <div class="sw-block-icon"><img src=""/></div>
-                            <h3>Start</h3>
-                            <p>It’s that simple. Startup Weekend is designed to get you going, FAST.</p>
-                            <p>Your local Organizers will set up the ideal environment for you to be successful and learn as much as possible in just 54 hours.</p>
-                        </div>
-                    </div>
-                </div>
+                </c:forEach>
             </div>
-        </section>
+        </div>
+    </section>
 
-
-        
     <%-- Rodapé --%>
     <jsp:include page="/WEB-INF/_footer.jsp"></jsp:include>
 
 </body>
+
 </html>

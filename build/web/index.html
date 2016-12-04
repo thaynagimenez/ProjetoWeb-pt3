@@ -5,7 +5,6 @@
 	<!--Metadados-->
 	<meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="keyword" content="Startup, Weekend, Network, Learn">
     <meta name="description" content="Startup Weekend - Learn, Network, Startup">
     <meta name="author" content="Ricardo Corassa e Thayna Gimenez">
 
@@ -31,6 +30,29 @@
 					<div class="find event-search col-lg-offset-1">						
 						<div>
 							<input class="form-control" id="event" name="event" placeholder="Find" size="50" type="text" />
+							<ul id="container"></ul>
+							<script type="text/javascript" charset="utf-8">
+						        var container = document.querySelector("#container");
+						        document.querySelector("input")
+						        			.addEventListener("keyup", function () {
+						            var xmlhttp = new XMLHttpRequest();
+						            xmlhttp.open("GET", "cidade?nome=" + this.value, true);
+						            xmlhttp.onreadystatechange = function () {
+							            if (xmlhttp.readyState === 4 && xmlhttp.status === 200) {
+							                var cidades = xmlhttp.responseText.split(',');
+							                container.innerHTML = "";
+							            	for (var i = 0; i < (cidades.length - 1); i++) {
+							                	var li = document.createElement("li");
+							                    li.innerHTML = cidades[i];
+							                    li.className = "";
+							                    container.appendChild(li);
+							                }
+							            }
+						           	};
+						                xmlhttp.send();
+						        });
+						        </script>
+
 							<button class="btn-search-menu" name="button" type="submit">GO</button>
 				  		</div>
 					</div>

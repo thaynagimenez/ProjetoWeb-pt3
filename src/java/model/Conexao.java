@@ -14,7 +14,7 @@ public class Conexao {
     private String email;
     private String senha;
     
-    private Conexao () {}
+    Conexao () {}
 
     public void setNome (String nome) { this.nome = nome; }
     public String getNome () { return this.nome; }

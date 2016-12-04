@@ -12,6 +12,7 @@ import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -25,6 +26,7 @@ public class Usuario {
     private String nome;
     private String login;
     private String senha;
+    private String endereco;
 
     private static Connection conn;
 
@@ -34,7 +36,7 @@ public class Usuario {
 
             Class.forName("org.postgresql.Driver");
             this.conn = DriverManager.getConnection(
-                    "jdbc:postgresql://localhost:5432/Projeto2", "postgres", "admin");
+                    "jdbc:postgresql://localhost:5432/Projeto2", "postgres", "thayna");
 
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(Publicacao.class.getName()).log(Level.SEVERE, null, ex);
@@ -64,24 +66,31 @@ public class Usuario {
     public Usuario get(String login) throws SQLException {
         Statement stm = conn.createStatement();
 
-        ResultSet rs = stm.executeQuery("SELECT * FROM Usuarios WHERE login=" + login + ";");
+        System.out.println("LOGIn : " + login);
+        
+        ResultSet rs = stm.executeQuery("SELECT nome,senha FROM public.\"Usuarios\" WHERE login='" + login + "';");
         Usuario usu = new Usuario();
+        usu.setLogin(login);
+        
+//        System.out.println(rs.getString("nome"));
+//        usu.setNome(rs.getString("nome"));
+//        usu.setSenha(rs.getString("senha"));
         return usu;
     }
 
-    public void update(String login, String senha, String nome) throws SQLException {
+    public void update(String login, String senha, String nome, String endereco) throws SQLException {
         PreparedStatement ps = this.conn.prepareStatement(
                 "UPDATE Usuarios SET nome=" + login + ",senha=" + senha
-                + "WHERE login=" + login + ";");
+                + ",endereco=" + endereco + "WHERE login=" + login + ";");
 
         ps.executeUpdate();
     }
-
-    public void insert(String nome, String login, String senha) throws SQLException {
+    
+    public void insert(String nome, String login, String senha, String endereco) throws SQLException {
 
         PreparedStatement ps = this.conn.prepareStatement(
-                "INSERT INTO public.\"Usuarios\"(login, senha, nome) "
-                + "VALUES ('" + login + "','" + senha + "','" + nome + "');");
+                "INSERT INTO public.\"Usuarios\"(login, senha, nome, endereco) "
+                + "VALUES ('" + login + "','" + senha + "','" + nome + "','" + endereco + "');");
 
         ps.executeUpdate();
 
@@ -96,16 +105,17 @@ public class Usuario {
 
     public boolean validaUsuario(String login, String senha) throws SQLException {
 
-        System.out.println("login:" + login);
-        System.out.println("senha:" + senha);
-
         PreparedStatement ps = conn.prepareStatement(
-                "SELECT senha FROM public.\"Usuarios\" WHERE login=?;");
-        ps.setString(1, login);
+                "SELECT * FROM public.\"Usuarios\" WHERE login='"+login+"';");
+
         ResultSet rs = ps.executeQuery();
-//        System.out.println("rs --> " + rs.getString("senha"));
-        //return rs.getString("senha").equals(senha);
-        return true;
+        ArrayList<String> r = new ArrayList<>();        
+        while (rs.next()) {
+            String s = rs.getString("senha");
+            r.add(s);
+        }
+        return r.contains(senha);
+
     }
 
     public String getNome() {
@@ -132,4 +142,12 @@ public class Usuario {
         this.senha = senha;
     }
 
+    public String getEndereco() {
+        return endereco;
+    }
+
+    public void setEndereco(String endereco) {
+        this.endereco = endereco;
+    }
+    
 }

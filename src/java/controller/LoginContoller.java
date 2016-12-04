@@ -31,7 +31,6 @@ public class LoginContoller extends HttpServlet {
 
         PrintWriter writer = response.getWriter();
         request.getRequestDispatcher("/WEB-INF/login.jsp").forward(request, response);
-
     }
 
     public void doPost(HttpServletRequest req,
@@ -47,12 +46,9 @@ public class LoginContoller extends HttpServlet {
                res.sendRedirect("home");
             }else{
                 res.sendRedirect("cadastro");
-            }
-            
+            }            
         } catch (SQLException ex) {
             Logger.getLogger(LoginContoller.class.getName()).log(Level.SEVERE, null, ex);
         }
-
     }
-
 }

@@ -3,10 +3,11 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/Ricardo/Documents/NetBeansProjects/WebProjeto2/src/java/controller/PublicacaoController.java</file>
-            <file>file:/C:/Users/Ricardo/Documents/NetBeansProjects/WebProjeto2/web/WEB-INF/publicacao.jsp</file>
-            <file>file:/C:/Users/Ricardo/Documents/NetBeansProjects/WebProjeto2/src/java/model/Publicacao.java</file>
-            <file>file:/C:/Users/Ricardo/Documents/NetBeansProjects/WebProjeto2/web/WEB-INF/web.xml</file>
+            <file>file:/F:/Google%20Drive/UTFPR/8º%20Periodo/Programacao%20Web/SW-Projeto2-Ricardo_Thayna/WebProjeto2/src/java/controller/BuscaTitulosController.java</file>
+            <file>file:/F:/Google%20Drive/UTFPR/8º%20Periodo/Programacao%20Web/SW-Projeto2-Ricardo_Thayna/WebProjeto2/web/WEB-INF/home.jsp</file>
+            <file>file:/F:/Google%20Drive/UTFPR/8º%20Periodo/Programacao%20Web/SW-Projeto2-Ricardo_Thayna/WebProjeto2/src/java/model/Publicacao.java</file>
+            <file>file:/F:/Google%20Drive/UTFPR/8º%20Periodo/Programacao%20Web/SW-Projeto2-Ricardo_Thayna/WebProjeto2/src/java/controller/BuscaController.java</file>
+            <file>file:/F:/Google%20Drive/UTFPR/8º%20Periodo/Programacao%20Web/SW-Projeto2-Ricardo_Thayna/WebProjeto2/web/WEB-INF/_header2.jsp</file>
         </group>
     </open-files>
 </project-private>
