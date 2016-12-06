@@ -36,7 +36,7 @@
 	<script type="text/javascript" src="/WEB-INF/biblioteca_ajax.js"></script>
         -->
          
-        
+         
         <script type="text/javascript">
             function loadXMLDoc2(a){var b;b=window.XMLHttpRequest?new XMLHttpRequest:new ActiveXObject("Microsoft.XMLHTTP"),b.open("GET",a,!0),b.onreadystatechange=function(){4==b.readyState&&200==b.status?document.getElementById("numpub").innerHTML="Número de publicações: "+b.responseText:4==b.readyState&&(document.getElementById("numpub").innerHTML="erro")},b.send(null)}
         </script>
