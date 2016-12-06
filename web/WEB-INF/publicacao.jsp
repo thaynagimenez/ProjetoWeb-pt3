@@ -10,7 +10,7 @@
 
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Plublicação de conteúdo - Startup Weekend</title>
+        <title>Publicação de conteúdo - Startup Weekend</title>
         <link href="style.css" rel="stylesheet" type="text/css" /> 
 
         <!-- Latest compiled and minified CSS -->
@@ -45,7 +45,16 @@
                         <input type="file" name="file" />
                         <br>
                         <br>
-                        <input type="submit" value="Enviar">
+                        <progress id="progress" value="0"></progress>
+                        <button id="enviando" type="submit" value="Enviar">Enviar</button>
+                        <br>
+                        <span id="display"></span>
+                        <br>
+                        
+                        <script>
+                            function upload(a){var b=new XMLHttpRequest;b.open("POST","./publicacao",!0),b.upload&&(b.upload.onprogress=function(a){a.lengthComputable&&(progressBar.max=a.total,progressBar.value=a.loaded,display.innerText=Math.floor(a.loaded/a.total*100)+"%")},b.upload.onloadstart=function(a){progressBar.value=0},b.upload.onloadend=function(a){progressBar.value=a.loaded,loadBtn.disabled=!1,loadBtn.innerHTML="100%"}),b.send(a)}function buildFormData(){for(var a=new FormData,b=0;b<3e3;b+=1)a.append("data[]",Math.floor(999999*Math.random()));return a}var progressBar=document.getElementById("progress"),loadBtn=document.getElementById("enviando"),display=document.getElementById("display");loadBtn.addEventListener("click",function(a){this.disabled=!0,this.innerHTML="Enviando...",upload(buildFormData())});
+                        </script>                         
+                        
                     </form>
                 </div>
             </div>

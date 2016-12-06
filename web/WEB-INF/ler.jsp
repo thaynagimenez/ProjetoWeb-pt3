@@ -25,10 +25,48 @@
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 
         <link href="icone.ico" rel="icon" sizes="32x32" type="image/ico" />
+        
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+        
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        
 
+        <script>
+            $( document ).ready(function() {
+                $('#myModal').modal('show');        
+
+                setTimeout(function(){
+                    $('#myModal').modal('hide')
+                }, 2000);
+            });
+
+            $(window).load(function(){});
+        </script> 
+        
     </head>
 
     <body>
+        
+        <div class="container">
+            <!-- Modal -->
+            <div class="modal fade" id="myModal" role="dialog">
+                <div class="modal-dialog">
+                    <!-- Modal content-->
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                            <h4 class="modal-title">Oi</h4>
+                        </div>
+                        <div class="modal-body">
+                            <p>Tenha paciência, aguarde...</p>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
 
         <%-- Cabeçallho --%>
         <jsp:include page="/WEB-INF/_header.jsp"></jsp:include>

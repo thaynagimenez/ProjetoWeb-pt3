@@ -89,6 +89,17 @@ public class Publicacao {
         }
         return resultado;
     }
+    
+    public String getNPublicacao() throws SQLException {
+        PreparedStatement ps = conn.prepareStatement(
+                "SELECT COUNT (*) FROM public.\"Artigos\";");
+        ResultSet rs = ps.executeQuery();
+        if (rs.next()) {
+            return rs.getString(1);
+            
+        }
+        return null;
+    }
 
     /**
      * Metodo para busca por titulo
